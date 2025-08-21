@@ -25,6 +25,13 @@ const GenerativeWeatherNews = () => {
         const data = await getWeatherNews();
         console.log('26', data);
         
+        console.log('Raw data from API:', data);
+        
+        // Check if there's an error in the response
+        if (data && data.error) {
+          throw new Error(`API Error: ${data.error}. Details: ${data.details || 'No details provided'}`);
+        }
+        
         // Separate UI configuration from news data
         if (data && data.ui) {
           setUiConfig(data.ui);
@@ -33,7 +40,7 @@ const GenerativeWeatherNews = () => {
           setNewsData(data.news);
           setUiConfig(null);
         } else {
-          throw new Error('Invalid data format received from AI');
+          throw new Error('Invalid data format received from AI. Expected ui and/or news properties.');
         }
         
         setLoading(false);
@@ -160,11 +167,19 @@ const GenerativeWeatherNews = () => {
         <h2>AI-Generated Weather News</h2>
         <div className="error-container">
           <p className="error-message">{error}</p>
+          <div className="error-details">
+            <h3>Error Details:</h3>
+            <pre className="error-json">
+              {error.toString().includes('JSON') ?
+                'JSON parsing error detected. This is likely due to an invalid API response format.' :
+                'Error communicating with the AI service.'}
+            </pre>
+          </div>
           <div className="error-help">
             <h3>Troubleshooting Steps:</h3>
             <ol>
               <li>Ensure the Flask backend is running with <code>npm start</code></li>
-              <li>Check that your Gemini API key is correctly set in the .env file</li>
+              <li><strong>Update your Gemini API key</strong> in the .env file with a valid key from <a href="https://ai.google.dev/" target="_blank" rel="noopener noreferrer">Google AI Studio</a></li>
               <li>Verify that the interlinked package is installed in your Python environment</li>
               <li>Check the browser console and server logs for more detailed error information</li>
             </ol>

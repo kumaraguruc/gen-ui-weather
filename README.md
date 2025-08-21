@@ -21,7 +21,8 @@ Make sure you have both Node.js and Python installed on your system.
 npm install
 
 # Install Python dependencies
-pip install flask flask-cors python-dotenv interlinked
+pip3 install apple-interlinked -U --index-url https://pypi.apple.com/simple
+pip3 install flask flask-cors python-dotenv
 ```
 
 ### 3. Configure Environment Variables

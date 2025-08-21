@@ -22,9 +22,10 @@ try:
         print("Warning: VITE_GEMINI_API_KEY not found in environment variables")
     
     # Create GoogleAIClient with the API key
-    google_ai_client = GoogleAIClient(model_name='gemini-2.0-flash', api_key="in-DhDhFRseRliiU4oJhO0iuA")
+    google_ai_client = GoogleAIClient(model_name='gemini-2.0-flash', api_key=api_key)
     print("Successfully initialized GoogleAIClient with API key")
-except ImportError:
+except ImportError as e:
+    print(f"Import Error Details: {e}")
     print("Error: interlinked package not installed. Please install it with: pip install interlinked")
     
     # Fallback mock implementation if interlinked is not available
@@ -244,13 +245,25 @@ def get_weather_news():
             # Try to find JSON in the response
             json_match = json.loads(response) if isinstance(response, str) else response
             return jsonify(json_match)
-        except json.JSONDecodeError:
+        except json.JSONDecodeError as e:
             # If direct parsing fails, try to extract JSON from the string
             import re
+            # Log the raw response for debugging
+            print(f"Raw response from AI: {response}")
+            print(f"JSON decode error: {str(e)}")
+            
+            # Try to extract JSON from the string
             json_match = re.search(r'\{[\s\S]*\}', response)
             if json_match:
-                news_data = json.loads(json_match.group(0))
-                return jsonify(news_data)
+                try:
+                    json_str = json_match.group(0)
+                    # Clean up potential issues in the JSON string
+                    json_str = json_str.replace('\n', ' ').replace('\r', '')
+                    news_data = json.loads(json_str)
+                    return jsonify(news_data)
+                except json.JSONDecodeError as inner_e:
+                    print(f"Failed to parse extracted JSON: {str(inner_e)}")
+                    raise ValueError(f"Could not parse extracted JSON: {str(inner_e)}")
             else:
                 raise ValueError("Could not extract JSON from response")
     except Exception as e:

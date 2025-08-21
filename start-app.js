@@ -65,7 +65,7 @@ function checkPythonPackages(pythonCommand) {
 import importlib.util
 import sys
 
-required_packages = ['flask', 'flask_cors', 'python-dotenv', 'interlinked']
+required_packages = ['flask', 'flask_cors', 'python-dotenv']
 missing_packages = []
 
 for package in required_packages:
