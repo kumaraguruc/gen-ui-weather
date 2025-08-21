@@ -1,0 +1,361 @@
+.weather-news-container {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 20px 0;
+  max-width: 800px;
+  width: 100%;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+/* AI Generated UI Indicators */
+.ai-generated-badge {
+  position: absolute;
+  top: -10px;
+  right: 20px;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: white;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  z-index: 10;
+}
+
+.ai-icon {
+  font-size: 1.1rem;
+}
+
+.ai-ui-info {
+  background-color: rgba(99, 102, 241, 0.1);
+  border-left: 3px solid #6366f1;
+  padding: 8px 12px;
+  margin-bottom: 15px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+
+.color-samples {
+  display: inline-flex;
+  margin-left: 10px;
+  gap: 5px;
+}
+
+.color-sample {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* AI Explanation Section */
+.ai-explanation {
+  background-color: #f0f7ff;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px dashed #6366f1;
+}
+
+.ai-explanation h3 {
+  color: #4f46e5;
+  margin-top: 0;
+  font-size: 1.2rem;
+}
+
+.ai-explanation p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #4b5563;
+}
+
+.ai-decisions {
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 6px;
+  padding: 10px 15px;
+}
+
+.ai-decisions h4 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-size: 1rem;
+  color: #4f46e5;
+}
+
+.ai-decisions ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.ai-decisions li {
+  font-size: 0.85rem;
+  margin-bottom: 4px;
+  color: #4b5563;
+}
+
+.generated-components h3 {
+  color: #4f46e5;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.weather-news-container h2 {
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 1.8rem;
+}
+
+/* Different layout options */
+.news-list {
+  display: flex;
+  gap: 15px;
+}
+
+.layout-list {
+  flex-direction: column;
+}
+
+.layout-grid {
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.layout-grid .news-item {
+  flex: 0 0 calc(50% - 15px);
+}
+
+.layout-cards {
+  flex-direction: column;
+}
+
+.layout-timeline {
+  flex-direction: column;
+  position: relative;
+}
+
+.layout-timeline .news-item {
+  position: relative;
+}
+
+.layout-timeline .news-item::before {
+  content: '';
+  position: absolute;
+  left: -30px;
+  top: 0;
+  height: 100%;
+  width: 2px;
+  background-color: #e0e0e0;
+}
+
+.layout-timeline .news-item::after {
+  content: '';
+  position: absolute;
+  left: -34px;
+  top: 20px;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background-color: #4a90e2;
+}
+
+.news-item {
+  background-color: #f9f9f9;
+  border-left: 4px solid #4a90e2;
+  border-radius: 4px;
+  padding: 15px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.news-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.news-severity {
+  display: inline-block;
+  font-weight: 600;
+  font-size: 0.8rem;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.news-visual-type {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+/* Generated components */
+.generated-components {
+  margin-bottom: 20px;
+}
+
+.generated-component {
+  background-color: rgba(0, 0, 0, 0.03);
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.generated-component:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.alert-icon, .map-icon, .chart-icon {
+  margin-right: 8px;
+  font-size: 1.2em;
+}
+
+.news-title {
+  color: #333;
+  font-size: 1.2rem;
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+
+.news-summary {
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.news-footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: #777;
+}
+
+.news-source {
+  font-weight: 500;
+}
+
+.news-date {
+  color: #888;
+}
+
+/* Loading state */
+.weather-news-container.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+}
+
+.loading-spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left: 4px solid #4a90e2;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 15px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Error state */
+.weather-news-container.error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 200px;
+}
+
+.error-container {
+  background-color: #fff8f8;
+  border: 1px solid #ffcdd2;
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 15px;
+  max-width: 600px;
+  width: 100%;
+}
+
+.error-message {
+  color: #e74c3c;
+  margin-bottom: 15px;
+  font-weight: 500;
+  text-align: left;
+}
+
+.error-help {
+  background-color: #f5f5f5;
+  border-radius: 6px;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.error-help h3 {
+  margin-top: 0;
+  color: #333;
+  font-size: 1rem;
+}
+
+.error-help ol {
+  margin: 10px 0;
+  padding-left: 25px;
+}
+
+.error-help li {
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+}
+
+.error-help code {
+  background-color: #e0e0e0;
+  padding: 2px 5px;
+  border-radius: 3px;
+  font-family: monospace;
+}
+
+.retry-button {
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease;
+  display: block;
+  margin: 0 auto;
+}
+
+.retry-button:hover {
+  background-color: #3a7bc8;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .weather-news-container {
+    padding: 15px;
+    margin: 15px 0;
+  }
+  
+  .weather-news-container h2 {
+    font-size: 1.5rem;
+  }
+  
+  .news-title {
+    font-size: 1.1rem;
+  }
+  
+  .news-summary {
+    font-size: 0.9rem;
+  }
+}
